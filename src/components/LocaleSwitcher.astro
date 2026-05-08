@@ -1,0 +1,64 @@
+---
+import { useTranslations, LOCALES, type Locale } from '@/i18n/index';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const labelFor: Record<Locale, string> = {
+  en: t.nav.localeEn,
+  es: t.nav.localeEs,
+};
+
+const hrefFor = (target: Locale): string => (target === 'en' ? '/' : `/${target}/`);
+---
+
+<div class="locale-switch" role="group" aria-label={t.nav.localeLabel}>
+  {LOCALES.map((target) => (
+    <a
+      href={hrefFor(target)}
+      class={`locale-switch__btn ${target === locale ? 'is-active' : ''}`}
+      hreflang={target}
+      aria-current={target === locale ? 'page' : 'false'}
+    >
+      <span class="mono">{target.toUpperCase()}</span>
+      <span class="visually-hidden">{labelFor[target]}</span>
+    </a>
+  ))}
+</div>
+
+<style>
+  .locale-switch {
+    display: inline-flex;
+    border: 1px solid var(--rule);
+    height: 2.5rem;
+  }
+
+  .locale-switch__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: var(--space-3);
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+    min-width: 2.5rem;
+  }
+
+  .locale-switch__btn + .locale-switch__btn {
+    border-left: 1px solid var(--rule);
+  }
+
+  .locale-switch__btn:hover {
+    color: var(--clay);
+    text-decoration: none;
+  }
+
+  .locale-switch__btn.is-active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+</style>

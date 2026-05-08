@@ -1,0 +1,155 @@
+---
+interface Props {
+  variant: 'dev' | 'support';
+  title: string;
+  email: string;
+  useFor: string;
+  cta: string;
+}
+
+const { variant, title, email, useFor, cta } = Astro.props;
+const accent = variant === 'dev' ? 'var(--clay)' : 'var(--pine)';
+const subjectMap: Record<Props['variant'], string> = {
+  dev: 'Hello%20from%20waycrosslabs.com',
+  support: 'Support%20inquiry',
+};
+const href = `mailto:${email}?subject=${subjectMap[variant]}`;
+---
+
+<a class={`ccard ccard--${variant}`} href={href} style={`--ccard-accent: ${accent};`}>
+  <div class="ccard__rule" aria-hidden="true"></div>
+  <div class="ccard__head">
+    <span class="ccard__variant mono">{variant === 'dev' ? '/dev' : '/support'}</span>
+    <h3 class="ccard__title">{title}</h3>
+  </div>
+
+  <div class="ccard__email mono">{email}</div>
+
+  <p class="ccard__use">{useFor}</p>
+
+  <div class="ccard__cta">
+    <span>{cta}</span>
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M5 12 H19 M13 6 L19 12 L13 18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+</a>
+
+<style>
+  .ccard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: clamp(var(--space-8), 3.5vw, var(--space-12));
+    border: 1px solid var(--rule);
+    background: var(--paper-shade);
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--dur-base) var(--ease), background-color var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+  }
+
+  .ccard::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(circle, var(--ccard-accent) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease);
+    pointer-events: none;
+  }
+
+  .ccard:hover {
+    border-color: var(--ccard-accent);
+    background: var(--paper);
+    text-decoration: none;
+  }
+
+  .ccard:hover::before {
+    opacity: 0.06;
+  }
+
+  .ccard__rule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--ccard-accent);
+  }
+
+  .ccard__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .ccard__variant {
+    color: var(--ccard-accent);
+    letter-spacing: 0.22em;
+    font-size: var(--t-xs);
+  }
+
+  .ccard__title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variation-settings:
+      'opsz' 144,
+      'SOFT' 0,
+      'WONK' 1;
+  }
+
+  .ccard__email {
+    font-size: var(--t-sm);
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    border-block: 1px solid var(--rule);
+    padding-block: var(--space-3);
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .ccard__use {
+    color: var(--ink-soft);
+    margin: 0;
+    font-size: var(--t-sm);
+    line-height: 1.55;
+  }
+
+  .ccard__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--t-md);
+    color: var(--ccard-accent);
+    margin-top: auto;
+    font-variation-settings:
+      'opsz' 24,
+      'SOFT' 100;
+  }
+
+  .ccard:hover .ccard__cta svg {
+    transform: translateX(0.35rem);
+  }
+
+  .ccard__cta svg {
+    transition: transform var(--dur-base) var(--ease);
+  }
+</style>

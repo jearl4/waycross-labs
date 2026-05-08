@@ -1,0 +1,123 @@
+/* ============================================================
+   Waycross Labs — design tokens
+   Two themes: paper (light) + loam (dark).
+   Aesthetic: Carolina Piedmont terroir.
+   Theme is applied via [data-theme="dark"] on <html>.
+   ============================================================ */
+
+:root {
+  /* color — light/paper (default) */
+  --paper: #f0e6d2;
+  --paper-shade: #e7dac3;
+  --paper-deep: #ddc9a8;
+  --ink: #1a1611;
+  --ink-soft: #4a3f35;
+  --ink-faint: #8a7a64;
+  --clay: #8b2d1f;
+  --clay-deep: #5c1d14;
+  --pine: #2c4a3e;
+  --gold: #c9a96e;
+  --rule: #c9bba4;
+  --halo: rgba(139, 45, 31, 0.08);
+
+  /* type scale (modular, ratio ≈ 1.25) */
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: 1rem;
+  --t-md: 1.125rem;
+  --t-lg: 1.375rem;
+  --t-xl: 1.875rem;
+  --t-2xl: 2.5rem;
+  --t-3xl: 3.5rem;
+  --t-4xl: 5rem;
+  --t-display: clamp(4rem, 14vw, 12rem);
+
+  /* type families */
+  --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
+  --font-body: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* leading */
+  --lh-tight: 0.95;
+  --lh-snug: 1.15;
+  --lh-base: 1.55;
+  --lh-loose: 1.75;
+
+  /* spacing — generous, editorial */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* radius — minimal; mostly square */
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 8px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.65, 0.25, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+  --dur-slow: 600ms;
+  --dur-page: 900ms;
+
+  /* container */
+  --container: 1240px;
+  --container-prose: 720px;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --paper: #15110d;
+  --paper-shade: #1d1813;
+  --paper-deep: #2a221b;
+  --ink: #f0e6d2;
+  --ink-soft: #b5a689;
+  --ink-faint: #6f6450;
+  --clay: #d35a44;
+  --clay-deep: #ed7a64;
+  --pine: #6b9b82;
+  --gold: #d9be85;
+  --rule: #3a2f25;
+  --halo: rgba(211, 90, 68, 0.12);
+
+  color-scheme: dark;
+}
+
+/* respect OS preference when the user hasn't set a manual override */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper: #15110d;
+    --paper-shade: #1d1813;
+    --paper-deep: #2a221b;
+    --ink: #f0e6d2;
+    --ink-soft: #b5a689;
+    --ink-faint: #6f6450;
+    --clay: #d35a44;
+    --clay-deep: #ed7a64;
+    --pine: #6b9b82;
+    --gold: #d9be85;
+    --rule: #3a2f25;
+    --halo: rgba(211, 90, 68, 0.12);
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-page: 0ms;
+  }
+}

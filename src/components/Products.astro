@@ -1,0 +1,91 @@
+---
+import ProductCard from '@/components/ProductCard.astro';
+import { products, liveProductsCount } from '@/content/products';
+import { useTranslations, type Locale } from '@/i18n/index';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const live = liveProductsCount(locale);
+const total = products.length;
+const padded = (n: number) => String(n).padStart(2, '0');
+const countLabel = `${padded(live)} / ${padded(total)} live`;
+---
+
+<section class="products section" id="products">
+  <div class="container products__grid">
+    <div class="products__label">
+      <div class="eyebrow">{t.products.eyebrow}</div>
+      <div class="products__index mono">§ 03</div>
+      <div class="products__count mono" aria-label={t.products.countLabel}>{countLabel}</div>
+    </div>
+
+    <div class="products__content">
+      <h2 class="products__heading">{t.products.heading}</h2>
+      <div class="products__list">
+        {products.map((product, idx) => (
+          <ProductCard product={product} locale={locale} index={idx} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products__grid {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+    gap: clamp(var(--space-8), 6vw, var(--space-20));
+    align-items: start;
+  }
+
+  .products__label {
+    position: sticky;
+    top: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .products__index {
+    color: var(--ink-faint);
+    letter-spacing: 0.18em;
+    font-size: var(--t-xs);
+  }
+
+  .products__count {
+    color: var(--clay);
+    font-size: var(--t-xs);
+    letter-spacing: 0.16em;
+  }
+
+  .products__heading {
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-12);
+    max-width: 18ch;
+    font-variation-settings:
+      'opsz' 144,
+      'SOFT' 0,
+      'WONK' 1;
+  }
+
+  .products__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 768px) {
+    .products__grid {
+      grid-template-columns: 1fr;
+    }
+    .products__label {
+      position: static;
+    }
+  }
+</style>

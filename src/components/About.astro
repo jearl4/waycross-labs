@@ -1,0 +1,107 @@
+---
+import { useTranslations, type Locale } from '@/i18n/index';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="about section" id="about">
+  <div class="container about__grid">
+    <div class="about__label">
+      <div class="eyebrow">{t.about.eyebrow}</div>
+      <div class="about__index mono">§ 01</div>
+    </div>
+    <div class="about__content">
+      <h2 class="about__heading">{t.about.heading}</h2>
+      <p class="about__body">{t.about.body}</p>
+      <ul class="about__values mono" aria-label="Studio values">
+        <li>Build for the long haul</li>
+        <li>Ship without ceremony</li>
+        <li>Earn the keep</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+    gap: clamp(var(--space-8), 6vw, var(--space-20));
+    align-items: start;
+  }
+
+  .about__label {
+    position: sticky;
+    top: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .about__index {
+    font-size: var(--t-xs);
+    color: var(--ink-faint);
+    letter-spacing: 0.18em;
+  }
+
+  .about__heading {
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-8);
+    max-width: 18ch;
+    font-variation-settings:
+      'opsz' 144,
+      'SOFT' 0,
+      'WONK' 1;
+  }
+
+  .about__body {
+    font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin-bottom: var(--space-10);
+  }
+
+  .about__values {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-4);
+    border-top: 1px solid var(--rule);
+    padding-top: var(--space-6);
+  }
+
+  .about__values li {
+    font-size: var(--t-xs);
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .about__values li::before {
+    content: '';
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--clay);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+    .about__label {
+      position: static;
+    }
+  }
+</style>

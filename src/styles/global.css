@@ -1,0 +1,241 @@
+/* ============================================================
+   Waycross Labs — global styles
+   ============================================================ */
+
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--t-md);
+  line-height: var(--lh-base);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-variation-settings:
+    'opsz' 14,
+    'SOFT' 50,
+    'WONK' 0;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: var(--lh-snug);
+  letter-spacing: -0.012em;
+  margin: 0;
+  font-variation-settings:
+    'opsz' 144,
+    'SOFT' 0,
+    'WONK' 1;
+}
+
+h1 {
+  font-size: var(--t-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.04em;
+  font-variation-settings:
+    'opsz' 144,
+    'SOFT' 0,
+    'WONK' 1;
+}
+
+h2 {
+  font-size: var(--t-2xl);
+}
+
+h3 {
+  font-size: var(--t-xl);
+}
+
+p {
+  margin: 0 0 var(--space-4) 0;
+  max-width: 64ch;
+}
+
+a {
+  color: var(--clay);
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+a:hover {
+  color: var(--clay-deep);
+  text-decoration: underline;
+}
+
+::selection {
+  background: var(--clay);
+  color: var(--paper);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--space-12) 0;
+  width: 100%;
+}
+
+/* utility */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
+}
+
+.prose {
+  max-width: var(--container-prose);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--clay);
+}
+
+.section {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-32));
+  position: relative;
+}
+
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* page-load reveal — single orchestrated entrance */
+
+@keyframes wl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: wl-rise var(--dur-page) var(--ease-out) both;
+}
+
+.reveal-1 {
+  animation-delay: 0ms;
+}
+.reveal-2 {
+  animation-delay: 120ms;
+}
+.reveal-3 {
+  animation-delay: 240ms;
+}
+.reveal-4 {
+  animation-delay: 360ms;
+}
+.reveal-5 {
+  animation-delay: 480ms;
+}
+
+/* skip link (a11y) */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+  transition: transform var(--dur-base) var(--ease);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
+/* focus styles */
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}

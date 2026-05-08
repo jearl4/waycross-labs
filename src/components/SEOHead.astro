@@ -1,0 +1,131 @@
+---
+import { useTranslations, alternateLocaleUrls, type Locale } from '@/i18n/index';
+import seo from '@/i18n/seo';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const copy = seo[locale];
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://waycrosslabs.com';
+const canonical = locale === 'en' ? `${siteUrl}/` : `${siteUrl}/${locale}/`;
+const alternates = alternateLocaleUrls(siteUrl);
+const ogImageAbs = `${siteUrl}${copy.ogImage}`;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Waycross Labs',
+  legalName: 'Waycross Labs LLC',
+  url: `${siteUrl}/`,
+  logo: `${siteUrl}/favicon.svg`,
+  description: copy.description,
+  founder: {
+    '@type': 'Person',
+    name: 'JT Earl',
+    alternateName: 'John Earl',
+    jobTitle: 'Founder & Engineer',
+    sameAs: [
+      'https://github.com/jearl4',
+      'https://www.linkedin.com/in/john-t-earl-114a1563/',
+    ],
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', name: 'AWS Certified Solutions Architect' },
+      { '@type': 'EducationalOccupationalCredential', name: 'AWS Certified Developer' },
+    ],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Charlotte',
+    addressRegion: 'NC',
+    postalCode: '28214',
+    addressCountry: 'US',
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'developer relations',
+      email: 'dev@waycrosslabs.com',
+      availableLanguage: ['English', 'Spanish'],
+    },
+    {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'support@waycrosslabs.com',
+      availableLanguage: ['English', 'Spanish'],
+    },
+  ],
+  sameAs: [
+    'https://github.com/jearl4',
+    'https://www.linkedin.com/in/john-t-earl-114a1563/',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Waycross Labs',
+  url: `${siteUrl}/`,
+  inLanguage: ['en-US', 'es-US'],
+  publisher: { '@type': 'Organization', name: 'Waycross Labs LLC' },
+};
+---
+
+<!-- primary -->
+<title>{copy.title}</title>
+<meta name="description" content={copy.description} />
+<meta name="keywords" content={copy.keywords.join(', ')} />
+<meta name="author" content="JT Earl" />
+<meta name="generator" content={Astro.generator} />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#F0E6D2" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15110D" media="(prefers-color-scheme: dark)" />
+
+<!-- canonical + hreflang -->
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="en" href={alternates.en} />
+<link rel="alternate" hreflang="es" href={alternates.es} />
+<link rel="alternate" hreflang="x-default" href={alternates['x-default']} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={t.meta.siteName} />
+<meta property="og:title" content={copy.title} />
+<meta property="og:description" content={copy.description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={t.meta.ogLocale} />
+{locale === 'en' ? <meta property="og:locale:alternate" content="es_US" /> : <meta property="og:locale:alternate" content="en_US" />}
+<meta property="og:image" content={ogImageAbs} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={copy.title} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={copy.title} />
+<meta name="twitter:description" content={copy.description} />
+<meta name="twitter:image" content={ogImageAbs} />
+
+<!-- icons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- preconnect for Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap"
+/>
+
+<!-- structured data -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

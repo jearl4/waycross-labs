@@ -1,0 +1,144 @@
+---
+import Wordmark from '@/components/Wordmark.astro';
+import { useTranslations, type Locale } from '@/i18n/index';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="hero" id="hero">
+  <div class="hero__inner container">
+    <div class="hero__eyebrow eyebrow reveal reveal-1">{t.hero.eyebrow}</div>
+
+    <div class="reveal reveal-2">
+      <Wordmark locale={locale} asH1={true} size="hero" />
+    </div>
+
+    <p class="hero__tagline reveal reveal-3">{t.hero.tagline}</p>
+
+    <div class="hero__floor reveal reveal-4">
+      <div class="hero__coords mono">35.2914° N · 80.9659° W</div>
+      <a href="#about" class="hero__scroll mono" aria-label={t.hero.scrollCue}>
+        <span>{t.hero.scrollCue}</span>
+        <svg viewBox="0 0 16 24" width="14" height="20" aria-hidden="true">
+          <path
+            d="M8 1 V22 M2 16 L8 22 L14 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- decorative side rule -->
+  <div class="hero__rule hero__rule--left" aria-hidden="true"></div>
+  <div class="hero__rule hero__rule--right" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--space-16);
+  }
+
+  .hero__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-10);
+    text-align: center;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 0;
+  }
+
+  .hero__tagline {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 2.2vw, 1.625rem);
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    max-width: 36ch;
+    margin: 0;
+    font-variation-settings:
+      'opsz' 24,
+      'SOFT' 100;
+  }
+
+  .hero__floor {
+    margin-top: clamp(var(--space-8), 6vh, var(--space-16));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-8);
+    width: 100%;
+    max-width: var(--container);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--rule);
+  }
+
+  .hero__coords {
+    color: var(--ink-soft);
+  }
+
+  .hero__scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .hero__scroll:hover {
+    color: var(--clay);
+  }
+
+  .hero__scroll svg {
+    transition: transform var(--dur-base) var(--ease);
+  }
+
+  .hero__scroll:hover svg {
+    transform: translateY(0.25rem);
+  }
+
+  .hero__rule {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .hero__rule--left {
+    left: max(2rem, 4vw);
+  }
+  .hero__rule--right {
+    right: max(2rem, 4vw);
+  }
+
+  @media (max-width: 640px) {
+    .hero__rule {
+      display: none;
+    }
+    .hero__floor {
+      flex-direction: column;
+      gap: var(--space-4);
+      align-items: stretch;
+    }
+  }
+</style>

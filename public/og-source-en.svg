@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0E6D2" />
+      <stop offset="1" stop-color="#E7DAC3" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- top hairline -->
+  <line x1="80" y1="80" x2="1120" y2="80" stroke="#C9BBA4" stroke-width="1" />
+  <line x1="80" y1="550" x2="1120" y2="550" stroke="#C9BBA4" stroke-width="1" />
+
+  <!-- top-left coords -->
+  <text x="80" y="60" font-family="Georgia, serif" font-size="14" fill="#4A3F35" letter-spacing="2.5">
+    35.2914° N · 80.9659° W · WAYCROSS DR · CHARLOTTE NC
+  </text>
+
+  <!-- eyebrow -->
+  <line x1="120" y1="155" x2="170" y2="155" stroke="#8B2D1F" stroke-width="1.5" />
+  <text x="180" y="160" font-family="Georgia, serif" font-size="16" fill="#8B2D1F" letter-spacing="3">
+    INDEPENDENT SOFTWARE STUDIO
+  </text>
+
+  <!-- wordmark -->
+  <text x="120" y="320" font-family="Georgia, serif" font-size="180" font-weight="500" fill="#1A1611" letter-spacing="-7">WAYCROSS</text>
+  <line x1="280" y1="370" x2="380" y2="370" stroke="#8B2D1F" stroke-width="3" />
+  <circle cx="330" cy="370" r="5" fill="#8B2D1F" />
+  <text x="120" y="475" font-family="Georgia, serif" font-size="180" font-weight="500" fill="#1A1611" letter-spacing="-7">LABS</text>
+
+  <!-- tagline -->
+  <text x="120" y="535" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#4A3F35">
+    An independent software studio. Built in the Carolina Piedmont.
+  </text>
+
+  <!-- bottom strip -->
+  <text x="80" y="600" font-family="Georgia, serif" font-size="14" fill="#4A3F35" letter-spacing="2.5">
+    EST. 2025 · WAYCROSSLABS.COM
+  </text>
+  <text x="1120" y="600" font-family="Georgia, serif" font-size="14" fill="#4A3F35" letter-spacing="2.5" text-anchor="end">
+    JT EARL · FOUNDER &amp; ENGINEER
+  </text>
+</svg>

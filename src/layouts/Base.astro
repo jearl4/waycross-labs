@@ -1,0 +1,47 @@
+---
+import '@/styles/global.css';
+import SEOHead from '@/components/SEOHead.astro';
+import { useTranslations, type Locale } from '@/i18n/index';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<!doctype html>
+<html lang={t.meta.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!-- FOUC-prevention: set data-theme before paint -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('wl-theme');
+          var theme;
+          if (stored === 'light' || stored === 'dark') {
+            theme = stored;
+          } else {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.dataset.theme = theme;
+        } catch (_e) {
+          /* noop */
+        }
+      })();
+    </script>
+
+    <SEOHead locale={locale} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">{t.nav.skipToContent}</a>
+    <slot />
+    <script>
+      import '@/scripts/theme.ts';
+    </script>
+  </body>
+</html>

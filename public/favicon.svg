@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <style>
+    .bg { fill: #F0E6D2; }
+    .ink { fill: #1A1611; }
+    .clay { fill: #8B2D1F; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #15110D; }
+      .ink { fill: #F0E6D2; }
+      .clay { fill: #D35A44; }
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="64" height="64" rx="8" />
+  <!-- W mark -->
+  <path
+    class="ink"
+    d="M14 18 L20 46 L26 28 L32 46 L38 18 L36 18 L31 38 L26 22 L21 38 L16 18 Z"
+  />
+  <!-- clay rule -->
+  <line x1="40" y1="32" x2="50" y2="32" stroke="#8B2D1F" stroke-width="2.5" stroke-linecap="round" class="clay-rule" />
+  <circle cx="50" cy="32" r="2" class="clay" />
+</svg>

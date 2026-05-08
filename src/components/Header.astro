@@ -1,0 +1,130 @@
+---
+import LocaleSwitcher from '@/components/LocaleSwitcher.astro';
+import ThemeToggle from '@/components/ThemeToggle.astro';
+import { useTranslations, type Locale } from '@/i18n/index';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="header__brand mono" href={locale === 'en' ? '/' : '/es/'}>
+      <span class="header__brand-mark" aria-hidden="true">▲</span>
+      <span>Waycross Labs</span>
+    </a>
+    <nav class="header__nav" aria-label="Primary">
+      <a href="#about" class="header__link mono">{t.nav.about}</a>
+      <a href="#founder" class="header__link mono">{t.nav.founder}</a>
+      <a href="#products" class="header__link mono">{t.nav.products}</a>
+      <a href="#contact" class="header__link mono">{t.nav.contact}</a>
+    </nav>
+    <div class="header__controls">
+      <LocaleSwitcher locale={locale} />
+      <ThemeToggle locale={locale} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding-block: var(--space-4);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--dur-base) var(--ease);
+  }
+
+  .header[data-scrolled='true'] {
+    border-bottom-color: var(--rule);
+  }
+
+  .header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .header__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--ink);
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    justify-self: start;
+  }
+
+  .header__brand:hover {
+    color: var(--clay);
+    text-decoration: none;
+  }
+
+  .header__brand-mark {
+    color: var(--clay);
+    font-size: 0.6rem;
+    transform: translateY(-1px);
+  }
+
+  .header__nav {
+    display: inline-flex;
+    gap: var(--space-6);
+    justify-self: center;
+  }
+
+  .header__link {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: var(--t-xs);
+    letter-spacing: 0.16em;
+    padding-block: var(--space-2);
+    border-bottom: 1px solid transparent;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  }
+
+  .header__link:hover {
+    color: var(--clay);
+    border-bottom-color: var(--clay);
+    text-decoration: none;
+  }
+
+  .header__controls {
+    display: inline-flex;
+    gap: var(--space-3);
+    align-items: center;
+    justify-self: end;
+  }
+
+  @media (max-width: 768px) {
+    .header__nav {
+      display: none;
+    }
+    .header__inner {
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var header = document.querySelector('[data-header]');
+    if (!header) return;
+    function onScroll() {
+      header.dataset.scrolled = String(window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>

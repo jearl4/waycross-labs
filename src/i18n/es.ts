@@ -1,0 +1,88 @@
+import type { Translations } from './index';
+
+const es: Translations = {
+  meta: {
+    siteName: 'Waycross Labs',
+    locale: 'es',
+    htmlLang: 'es',
+    ogLocale: 'es_US',
+  },
+  nav: {
+    skipToContent: 'Saltar al contenido',
+    about: 'Estudio',
+    founder: 'Fundador',
+    products: 'Productos',
+    contact: 'Contacto',
+    themeLabel: 'Alternar tema de color',
+    themeLight: 'Cambiar a tema claro',
+    themeDark: 'Cambiar a tema oscuro',
+    localeLabel: 'Cambiar idioma',
+    localeEn: 'English',
+    localeEs: 'Español',
+  },
+  hero: {
+    eyebrow: 'Estudio de software independiente',
+    wordmarkTop: 'Waycross',
+    wordmarkBottom: 'Labs',
+    establishment: 'Fundado en Charlotte, NC · 28214',
+    tagline: 'Un estudio de software independiente. Hecho en el Piedmont de Carolina.',
+    scrollCue: 'Sigue',
+  },
+  about: {
+    eyebrow: 'Estudio',
+    heading: 'Un taller, no una fábrica.',
+    body: 'Waycross Labs es un estudio independiente de ingeniería. Construimos productos de software pequeños y útiles, uno a la vez — del tipo que aguanta el uso real, no del tipo que se ve bien en una demo y se cae después. El estudio es pequeño a propósito: cada producto se construye con cuidado, se publica sin ceremonia y se juzga por si vale lo que cuesta.',
+  },
+  founder: {
+    eyebrow: 'Fundador',
+    nameDisplay: 'JT Earl',
+    nameLong: 'John “JT” Earl',
+    role: 'Fundador e Ingeniero',
+    body: 'Diez años de ingeniería de software dentro de la industria financiera fuertemente regulada le enseñaron a JT Earl a construir para el largo plazo — sistemas donde equivocarse salía caro. Lleva ese rigor a Waycross Labs como Fundador e Ingeniero: certificado AWS Solution Architect y AWS Developer, deliberadamente agnóstico en tecnologías, eligiendo la herramienta correcta para el problema en lugar de la más ruidosa. El trabajo en sí es el punto — construir, crear, nunca dejar de preguntar por qué, nunca terminar de aprender. Waycross Labs es donde eso ocurre.',
+    credsHeading: 'Certificaciones',
+    credAwsSa: 'AWS Solution Architect',
+    credAwsDev: 'AWS Developer',
+    socialsHeading: 'Dónde encontrarlo',
+    githubLabel: 'GitHub',
+    linkedinLabel: 'LinkedIn',
+  },
+  products: {
+    eyebrow: 'Productos',
+    heading: 'Lo que el estudio está publicando.',
+    countLabel: '01 / 01 en vivo',
+    framefocal: {
+      tagline: 'Galerías fotográficas hechas para fotógrafos y clientes.',
+      description:
+        'Una plataforma moderna y optimizada en costos para que los fotógrafos compartan su trabajo con clientes mediante galerías privadas protegidas con contraseña — con marca de agua opcional, favoritos del cliente y analítica de descargas. Diseñada con cuidado para mantener bajos los costos de almacenamiento y CDN, sin sacrificar cómo debe verse la fotografía.',
+      featureList: [
+        'Galerías privadas protegidas con contraseña',
+        'Marca de agua opcional y analítica de descargas',
+        'Metadatos EXIF, favoritos, expiraciones',
+        'Construido sobre AWS · S3 · CloudFront · Lambda',
+      ],
+      statusLabel: 'En vivo',
+      cta: 'Visita framefocal.com',
+    },
+  },
+  contact: {
+    eyebrow: 'Contacto',
+    heading: 'Dos puertas. Elige la correcta.',
+    body: 'Mantenemos las bandejas de entrada separadas para que los mensajes lleguen al lugar correcto. Si tienes dudas, escribe a soporte — lo dirigimos desde ahí.',
+    devTitle: 'Desarrollo',
+    devEmail: 'dev@waycrosslabs.com',
+    devUseFor: 'Para: contacto entre desarrolladores, alianzas, preguntas técnicas y reportes de seguridad.',
+    devCta: 'Escribir al desarrollador',
+    supportTitle: 'Soporte y consultas',
+    supportEmail: 'support@waycrosslabs.com',
+    supportUseFor: 'Para: soporte de producto, preguntas de cuenta, prensa y todo lo demás.',
+    supportCta: 'Escribir a soporte',
+  },
+  footer: {
+    location: 'Waycross Dr · Charlotte, NC',
+    coordinates: '35.2914° N · 80.9659° W',
+    rights: '© {year} Waycross Labs LLC. Todos los derechos reservados.',
+    builtIn: 'Hecho en el Piedmont de Carolina.',
+  },
+};
+
+export default es;
