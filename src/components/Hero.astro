@@ -49,7 +49,9 @@ const t = useTranslations(locale);
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-block: var(--space-16);
+    /* top padding clears the fixed header (~3.5rem tall + breathing room) */
+    padding-top: clamp(7rem, 12vh, 10rem);
+    padding-bottom: var(--space-16);
   }
 
   .hero__inner {

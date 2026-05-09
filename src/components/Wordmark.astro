@@ -40,7 +40,6 @@ const Tag = asH1 ? 'h1' : 'div';
 
   .wordmark__line {
     font-family: var(--font-display);
-    line-height: 0.85;
     letter-spacing: -0.05em;
     font-weight: 400;
     text-transform: uppercase;
@@ -52,26 +51,25 @@ const Tag = asH1 ? 'h1' : 'div';
 
   .wordmark--hero .wordmark__line {
     font-size: clamp(4.5rem, 18vw, 14rem);
+    line-height: 0.85;
   }
 
   .wordmark--compact .wordmark__line {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1;
   }
 
-  .wordmark__line--top {
+  .wordmark--hero .wordmark__line--top {
     transform: translateX(-0.04em);
   }
 
-  .wordmark__line--bottom {
+  .wordmark--hero .wordmark__line--bottom {
     transform: translateX(0.04em);
   }
 
   .wordmark__rule {
     display: block;
-    width: clamp(6rem, 30vw, 22rem);
-    height: 0.5rem;
     color: var(--clay);
-    margin-block: clamp(-0.5rem, -1vw, -0.25rem);
   }
 
   .wordmark__rule svg {
@@ -80,9 +78,16 @@ const Tag = asH1 ? 'h1' : 'div';
     overflow: visible;
   }
 
+  .wordmark--hero .wordmark__rule {
+    width: clamp(6rem, 30vw, 22rem);
+    height: 0.5rem;
+    margin-block: clamp(-0.5rem, -1vw, -0.25rem);
+  }
+
   .wordmark--compact .wordmark__rule {
-    width: 3.5rem;
-    height: 0.35rem;
+    width: 3rem;
+    height: 0.4rem;
+    margin-block: var(--space-2);
   }
 
   .wordmark__establishment {

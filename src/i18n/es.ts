@@ -78,7 +78,7 @@ const es: Translations = {
     supportCta: 'Escribir a soporte',
   },
   footer: {
-    location: 'Waycross Dr · Charlotte, NC',
+    location: 'Charlotte, NC · 28214',
     coordinates: '35.2914° N · 80.9659° W',
     rights: '© {year} Waycross Labs LLC. Todos los derechos reservados.',
     builtIn: 'Hecho en el Piedmont de Carolina.',
