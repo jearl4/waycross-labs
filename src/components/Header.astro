@@ -252,10 +252,8 @@ const navLinks = [
 
     function setOpen(open) {
       btn.setAttribute('aria-expanded', String(open));
-      btn.setAttribute(
-        'aria-label',
-        open ? btn.dataset.labelClose : btn.dataset.labelOpen
-      );
+      var label = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
+      if (label) btn.setAttribute('aria-label', label);
       if (open) {
         panel.removeAttribute('hidden');
         var first = panel.querySelector('a');

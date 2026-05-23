@@ -210,7 +210,9 @@ hr {
 
 /* honor the user's reduced-motion preference globally — tokens.css already
    zeroes out durations; here we also disable smooth scroll and the page-load
-   reveal so nothing slides under the user (WCAG 2.2 AA — 2.3.3 best practice) */
+   reveal so nothing slides under the user. The auto-moving reveal is covered
+   by WCAG 2.2 AA SC 2.2.2 (Pause, Stop, Hide); honoring prefers-reduced-motion
+   is the principle from AAA SC 2.3.3, applied here as a best practice. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

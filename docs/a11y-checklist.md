@@ -2,7 +2,7 @@
 
 **Target standard:** WCAG 2.2 AA (covers Section 508, EN 301 549, ADA case law).
 
-Automated scans (`npm run a11y`) catch ~30% of real failures. The rest are caught by going through this list before a release. Run it on both locales: `/` and `/es/`.
+Automated scans (`npm run a11y`) catch a meaningful fraction of real failures but never all of them — keyboard flow, screen reader semantics, focus management, motion, and zoom behavior need a human pass. Run this list on both locales (`/` and `/es/`) before a release.
 
 ## Automated (CI also enforces)
 
@@ -32,7 +32,7 @@ Automated scans (`npm run a11y`) catch ~30% of real failures. The rest are caugh
 
 Test with VoiceOver (macOS: `Cmd-F5`) or NVDA (Windows). On both `/` and `/es/`:
 
-- [ ] **Rotor → Headings**: 1 × h1 (wordmark), 4 × h2 (About / Founder / Products / Contact), then h3s for the product card and each contact card. No skipped levels.
+- [ ] **Rotor → Headings**: 1 × h1 (wordmark), 4 × h2 (About / Founder / Products / Contact), then one h3 per product card (currently 1) plus one h3 per contact card (currently 2). Total today = 1 + 4 + 1 + 2 = 8. The h3 count grows with the number of cards — if that count diverges, a card is missing or duplicated. No skipped levels.
 - [ ] **Rotor → Landmarks**: `banner`, `navigation` (primary), `main`, `contentinfo` — all present and labeled
 - [ ] Each section is announced with its eyebrow + heading (via `aria-labelledby`) — e.g. "About, region, A workshop, not a factory."
 - [ ] Theme toggle announces the *next* action: "Switch to dark theme" in light mode, "Switch to light theme" in dark mode
