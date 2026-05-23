@@ -13,8 +13,9 @@ const t = useTranslations(locale);
   type="button"
   class="theme-toggle"
   data-theme-toggle
-  aria-label={t.nav.themeLabel}
-  aria-pressed="false"
+  aria-label={t.nav.themeDark}
+  data-label-light={t.nav.themeLight}
+  data-label-dark={t.nav.themeDark}
 >
   <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
     <svg viewBox="0 0 24 24" width="18" height="18">
@@ -48,7 +49,7 @@ const t = useTranslations(locale);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--rule-strong);
     background: var(--paper);
     color: var(--ink);
     transition:

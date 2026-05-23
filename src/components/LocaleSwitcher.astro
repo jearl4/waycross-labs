@@ -33,7 +33,7 @@ const hrefFor = (target: Locale): string => (target === 'en' ? '/' : `/${target}
 <style>
   .locale-switch {
     display: inline-flex;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--rule-strong);
     height: 2.5rem;
   }
 
@@ -49,7 +49,7 @@ const hrefFor = (target: Locale): string => (target === 'en' ? '/' : `/${target}
   }
 
   .locale-switch__btn + .locale-switch__btn {
-    border-left: 1px solid var(--rule);
+    border-left: 1px solid var(--rule-strong);
   }
 
   .locale-switch__btn:hover {
@@ -57,7 +57,8 @@ const hrefFor = (target: Locale): string => (target === 'en' ? '/' : `/${target}
     text-decoration: none;
   }
 
-  .locale-switch__btn.is-active {
+  .locale-switch__btn.is-active,
+  .locale-switch__btn.is-active .mono {
     background: var(--ink);
     color: var(--paper);
   }

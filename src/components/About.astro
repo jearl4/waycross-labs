@@ -8,19 +8,17 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<section class="about section" id="about">
+<section class="about section" id="about" aria-labelledby="about-heading">
   <div class="container about__grid">
     <div class="about__label">
       <div class="eyebrow">{t.about.eyebrow}</div>
       <div class="about__index mono">§ 01</div>
     </div>
     <div class="about__content">
-      <h2 class="about__heading">{t.about.heading}</h2>
+      <h2 class="about__heading" id="about-heading">{t.about.heading}</h2>
       <p class="about__body">{t.about.body}</p>
-      <ul class="about__values mono" aria-label="Studio values">
-        <li>Build for the long haul</li>
-        <li>Ship without ceremony</li>
-        <li>Earn the keep</li>
+      <ul class="about__values mono" aria-label={t.about.valuesLabel}>
+        {t.about.values.map((v) => <li>{v}</li>)}
       </ul>
     </div>
   </div>

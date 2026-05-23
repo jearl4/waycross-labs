@@ -10,22 +10,37 @@ interface Props {
 
 const { locale, asH1 = false, size = 'hero' } = Astro.props;
 const t = useTranslations(locale);
-const Tag = asH1 ? 'h1' : 'div';
 ---
 
-<Tag class={`wordmark wordmark--${size}`} aria-label={`${t.hero.wordmarkTop} ${t.hero.wordmarkBottom}`}>
-  <span class="wordmark__line wordmark__line--top">{t.hero.wordmarkTop}</span>
-  <span class="wordmark__rule" aria-hidden="true">
-    <svg viewBox="0 0 200 12" preserveAspectRatio="none" focusable="false">
-      <line x1="0" y1="6" x2="200" y2="6" stroke="currentColor" stroke-width="2" />
-      <circle cx="100" cy="6" r="3" fill="currentColor" />
-    </svg>
-  </span>
-  <span class="wordmark__line wordmark__line--bottom">{t.hero.wordmarkBottom}</span>
-  {size === 'hero' && (
-    <span class="wordmark__establishment mono">{t.hero.establishment}</span>
-  )}
-</Tag>
+{asH1 ? (
+  <h1 class={`wordmark wordmark--${size}`} aria-label={`${t.hero.wordmarkTop} ${t.hero.wordmarkBottom}`}>
+    <span class="wordmark__line wordmark__line--top">{t.hero.wordmarkTop}</span>
+    <span class="wordmark__rule" aria-hidden="true">
+      <svg viewBox="0 0 200 12" preserveAspectRatio="none" focusable="false">
+        <line x1="0" y1="6" x2="200" y2="6" stroke="currentColor" stroke-width="2" />
+        <circle cx="100" cy="6" r="3" fill="currentColor" />
+      </svg>
+    </span>
+    <span class="wordmark__line wordmark__line--bottom">{t.hero.wordmarkBottom}</span>
+    {size === 'hero' && (
+      <span class="wordmark__establishment mono">{t.hero.establishment}</span>
+    )}
+  </h1>
+) : (
+  <div class={`wordmark wordmark--${size}`}>
+    <span class="wordmark__line wordmark__line--top">{t.hero.wordmarkTop}</span>
+    <span class="wordmark__rule" aria-hidden="true">
+      <svg viewBox="0 0 200 12" preserveAspectRatio="none" focusable="false">
+        <line x1="0" y1="6" x2="200" y2="6" stroke="currentColor" stroke-width="2" />
+        <circle cx="100" cy="6" r="3" fill="currentColor" />
+      </svg>
+    </span>
+    <span class="wordmark__line wordmark__line--bottom">{t.hero.wordmarkBottom}</span>
+    {size === 'hero' && (
+      <span class="wordmark__establishment mono">{t.hero.establishment}</span>
+    )}
+  </div>
+)}
 
 <style>
   .wordmark {

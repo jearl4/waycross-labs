@@ -12,12 +12,13 @@
   --paper-deep: #ddc9a8;
   --ink: #1a1611;
   --ink-soft: #4a3f35;
-  --ink-faint: #8a7a64;
+  --ink-faint: #685a45;
   --clay: #8b2d1f;
   --clay-deep: #5c1d14;
   --pine: #2c4a3e;
   --gold: #c9a96e;
   --rule: #c9bba4;
+  --rule-strong: #7e6f57;
   --halo: rgba(139, 45, 31, 0.08);
 
   /* type scale (modular, ratio ≈ 1.25) */
@@ -83,12 +84,13 @@
   --paper-deep: #2a221b;
   --ink: #f0e6d2;
   --ink-soft: #b5a689;
-  --ink-faint: #6f6450;
+  --ink-faint: #918671;
   --clay: #d35a44;
   --clay-deep: #ed7a64;
   --pine: #6b9b82;
   --gold: #d9be85;
   --rule: #3a2f25;
+  --rule-strong: #7e6c55;
   --halo: rgba(211, 90, 68, 0.12);
 
   color-scheme: dark;
@@ -102,12 +104,13 @@
     --paper-deep: #2a221b;
     --ink: #f0e6d2;
     --ink-soft: #b5a689;
-    --ink-faint: #6f6450;
+    --ink-faint: #918671;
     --clay: #d35a44;
     --clay-deep: #ed7a64;
     --pine: #6b9b82;
     --gold: #d9be85;
     --rule: #3a2f25;
+    --rule-strong: #7e6c55;
     --halo: rgba(211, 90, 68, 0.12);
     color-scheme: dark;
   }

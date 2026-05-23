@@ -19,6 +19,9 @@ export interface Translations {
     founder: string;
     products: string;
     contact: string;
+    primaryLabel: string;
+    openMenu: string;
+    closeMenu: string;
     themeLabel: string;
     themeLight: string;
     themeDark: string;
@@ -38,6 +41,8 @@ export interface Translations {
     eyebrow: string;
     heading: string;
     body: string;
+    valuesLabel: string;
+    values: readonly string[];
   };
   founder: {
     eyebrow: string;

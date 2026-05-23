@@ -208,6 +208,20 @@ hr {
   animation-delay: 480ms;
 }
 
+/* honor the user's reduced-motion preference globally — tokens.css already
+   zeroes out durations; here we also disable smooth scroll and the page-load
+   reveal so nothing slides under the user (WCAG 2.2 AA — 2.3.3 best practice) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* skip link (a11y) */
 
 .skip-link {
@@ -238,4 +252,16 @@ hr {
   outline: 2px solid var(--clay);
   outline-offset: 3px;
   border-radius: var(--r-xs);
+}
+
+/* main is programmatically focused via skip-link; suppress the outline since
+   the surrounding content already makes context obvious */
+main:focus {
+  outline: none;
+}
+
+/* in-page anchor targets need offset so the fixed header doesn't obscure
+   them on scroll or focus (WCAG 2.2 AA — 2.4.11 Focus Not Obscured) */
+:where(#main, #hero, #about, #founder, #products, #contact) {
+  scroll-margin-top: 5rem;
 }
