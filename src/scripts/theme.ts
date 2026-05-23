@@ -26,8 +26,10 @@ function toggleTheme(): void {
 
 function syncButtonState(button: HTMLButtonElement): void {
   const current = getEffectiveTheme();
-  button.setAttribute('aria-pressed', String(current === 'dark'));
   button.dataset.theme = current;
+  const nextLabel =
+    current === 'dark' ? button.dataset.labelLight : button.dataset.labelDark;
+  if (nextLabel) button.setAttribute('aria-label', nextLabel);
 }
 
 function initThemeToggle(): void {

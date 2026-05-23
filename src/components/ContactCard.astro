@@ -17,7 +17,6 @@ const href = `mailto:${email}?subject=${subjectMap[variant]}`;
 ---
 
 <a class={`ccard ccard--${variant}`} href={href} style={`--ccard-accent: ${accent};`}>
-  <div class="ccard__rule" aria-hidden="true"></div>
   <div class="ccard__head">
     <span class="ccard__variant mono">{variant === 'dev' ? '/dev' : '/support'}</span>
     <h3 class="ccard__title">{title}</h3>
@@ -48,7 +47,8 @@ const href = `mailto:${email}?subject=${subjectMap[variant]}`;
     flex-direction: column;
     gap: var(--space-6);
     padding: clamp(var(--space-8), 3.5vw, var(--space-12));
-    border: 1px solid var(--rule);
+    border: 1px solid var(--rule-strong);
+    border-top: 3px solid var(--ccard-accent);
     background: var(--paper-shade);
     color: var(--ink);
     text-decoration: none;
@@ -78,15 +78,6 @@ const href = `mailto:${email}?subject=${subjectMap[variant]}`;
 
   .ccard:hover::before {
     opacity: 0.06;
-  }
-
-  .ccard__rule {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--ccard-accent);
   }
 
   .ccard__head {

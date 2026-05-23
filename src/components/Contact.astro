@@ -9,7 +9,7 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<section class="contact section" id="contact">
+<section class="contact section" id="contact" aria-labelledby="contact-heading">
   <div class="container contact__grid">
     <div class="contact__label">
       <div class="eyebrow">{t.contact.eyebrow}</div>
@@ -17,7 +17,7 @@ const t = useTranslations(locale);
     </div>
 
     <div class="contact__content">
-      <h2 class="contact__heading">{t.contact.heading}</h2>
+      <h2 class="contact__heading" id="contact-heading">{t.contact.heading}</h2>
       <p class="contact__body">{t.contact.body}</p>
 
       <div class="contact__cards">

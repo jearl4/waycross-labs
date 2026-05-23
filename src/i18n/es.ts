@@ -13,6 +13,9 @@ const es: Translations = {
     founder: 'Fundador',
     products: 'Productos',
     contact: 'Contacto',
+    primaryLabel: 'Principal',
+    openMenu: 'Abrir menú de navegación',
+    closeMenu: 'Cerrar menú de navegación',
     themeLabel: 'Alternar tema de color',
     themeLight: 'Cambiar a tema claro',
     themeDark: 'Cambiar a tema oscuro',
@@ -32,6 +35,12 @@ const es: Translations = {
     eyebrow: 'Estudio',
     heading: 'Un taller, no una fábrica.',
     body: 'Waycross Labs es un estudio independiente de ingeniería. Construimos productos de software pequeños y útiles, uno a la vez — del tipo que aguanta el uso real, no del tipo que se ve bien en una demo y se cae después. El estudio es pequeño a propósito: cada producto se construye con cuidado, se publica sin ceremonia y se juzga por si vale lo que cuesta.',
+    valuesLabel: 'Valores del estudio',
+    values: [
+      'Construir para el largo plazo',
+      'Publicar sin ceremonia',
+      'Ganarse el lugar',
+    ],
   },
   founder: {
     eyebrow: 'Fundador',

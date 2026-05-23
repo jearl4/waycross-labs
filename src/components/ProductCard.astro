@@ -42,7 +42,7 @@ const idx = String(index + 1).padStart(2, '0');
   </div>
 
   <footer class="product__foot">
-    <a class="product__cta" href={product.url} target="_blank" rel="noopener">
+    <a class="product__cta" href={product.url} target="_blank" rel="noopener noreferrer">
       <span>{copy.cta}</span>
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
         <path
@@ -63,30 +63,18 @@ const idx = String(index + 1).padStart(2, '0');
   .product {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--rule);
-    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-shade) 100%);
+    border: 1px solid var(--rule-strong);
+    border-left: 4px solid var(--product-accent);
+    background-color: var(--paper-shade);
+    background-image: linear-gradient(180deg, var(--paper) 0%, var(--paper-shade) 100%);
     padding: clamp(var(--space-8), 4vw, var(--space-16));
     position: relative;
-    transition: border-color var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
-  }
-
-  .product::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--product-accent);
-    transition: width var(--dur-base) var(--ease);
+    transition: border-color var(--dur-base) var(--ease), border-width var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
   }
 
   .product:hover {
     border-color: var(--product-accent);
-  }
-
-  .product:hover::before {
-    width: 8px;
+    border-left-width: 8px;
   }
 
   .product__head {

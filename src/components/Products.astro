@@ -15,16 +15,19 @@ const padded = (n: number) => String(n).padStart(2, '0');
 const countLabel = `${padded(live)} / ${padded(total)} live`;
 ---
 
-<section class="products section" id="products">
+<section class="products section" id="products" aria-labelledby="products-heading">
   <div class="container products__grid">
     <div class="products__label">
       <div class="eyebrow">{t.products.eyebrow}</div>
       <div class="products__index mono">§ 03</div>
-      <div class="products__count mono" aria-label={t.products.countLabel}>{countLabel}</div>
+      <p class="products__count mono">
+        <span class="visually-hidden">{t.products.countLabel}: </span>
+        <span aria-hidden="true">{countLabel}</span>
+      </p>
     </div>
 
     <div class="products__content">
-      <h2 class="products__heading">{t.products.heading}</h2>
+      <h2 class="products__heading" id="products-heading">{t.products.heading}</h2>
       <div class="products__list">
         {products.map((product, idx) => (
           <ProductCard product={product} locale={locale} index={idx} />
@@ -60,6 +63,7 @@ const countLabel = `${padded(live)} / ${padded(total)} live`;
     color: var(--clay);
     font-size: var(--t-xs);
     letter-spacing: 0.16em;
+    margin: 0;
   }
 
   .products__heading {

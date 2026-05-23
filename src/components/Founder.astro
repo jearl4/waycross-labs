@@ -11,7 +11,7 @@ const GITHUB_URL = 'https://github.com/jearl4';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/john-t-earl-114a1563/';
 ---
 
-<section class="founder section" id="founder">
+<section class="founder section" id="founder" aria-labelledby="founder-heading">
   <div class="container founder__grid">
     <div class="founder__label">
       <div class="eyebrow">{t.founder.eyebrow}</div>
@@ -20,7 +20,7 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/john-t-earl-114a1563/';
 
     <div class="founder__content">
       <div class="founder__name-block">
-        <h2 class="founder__name">{t.founder.nameDisplay}</h2>
+        <h2 class="founder__name" id="founder-heading">{t.founder.nameDisplay}</h2>
         <span class="founder__longname mono">{t.founder.nameLong}</span>
         <span class="founder__role">{t.founder.role}</span>
       </div>
@@ -32,11 +32,15 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/john-t-earl-114a1563/';
           <div class="founder__details-heading mono">{t.founder.credsHeading}</div>
           <ul class="founder__cred-list">
             <li>
-              <span class="founder__cred-mark" aria-hidden="true">◇</span>
+              <svg class="founder__cred-mark" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" focusable="false">
+                <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="currentColor" />
+              </svg>
               <span class="mono">{t.founder.credAwsSa}</span>
             </li>
             <li>
-              <span class="founder__cred-mark" aria-hidden="true">◇</span>
+              <svg class="founder__cred-mark" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" focusable="false">
+                <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="currentColor" />
+              </svg>
               <span class="mono">{t.founder.credAwsDev}</span>
             </li>
           </ul>
