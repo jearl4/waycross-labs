@@ -76,7 +76,7 @@ const es: Translations = {
   contact: {
     eyebrow: 'Contacto',
     heading: 'Hablemos.',
-    body: 'Dos bandejas de entrada, para que los mensajes no se pierdan. Si no estás seguro cuál, soporte siempre funciona.',
+    body: 'Dos bandejas de entrada, para que los mensajes no se pierdan. Si no estás seguro de cuál, soporte siempre funciona.',
     devTitle: 'Desarrollo',
     devEmail: 'dev@waycrosslabs.com',
     devUseFor: 'Para: hablar de código, preguntas técnicas y reportes de seguridad.',
