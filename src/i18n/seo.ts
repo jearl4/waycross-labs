@@ -9,32 +9,30 @@ interface SeoCopy {
 
 const seo: Record<Locale, SeoCopy> = {
   en: {
-    title: 'Waycross Labs — Independent Software Studio · Charlotte, NC',
+    title: 'Waycross Labs — A Small Software Lab · Charlotte, NC',
     description:
-      'Waycross Labs is an independent software studio in Charlotte, NC. Founded by JT Earl — AWS Solution Architect and Developer certified — currently shipping FrameFocal, a photo-gallery platform for photographers.',
+      'Waycross Labs is a small software lab in Charlotte, NC, where JT Earl builds useful software one product at a time. Currently shipping FrameFocal, a photo-gallery platform for photographers.',
     keywords: [
       'Waycross Labs',
       'JT Earl',
       'John Earl software engineer',
-      'independent software studio Charlotte',
+      'software lab Charlotte',
       'AWS Solution Architect Charlotte',
       'FrameFocal',
-      'engineering studio NC',
       'Carolina Piedmont software',
     ],
     ogImage: '/og-image.png',
   },
   es: {
-    title: 'Waycross Labs — Estudio de Software Independiente · Charlotte, NC',
+    title: 'Waycross Labs — Un Pequeño Laboratorio de Software · Charlotte, NC',
     description:
-      'Waycross Labs es un estudio de software independiente en Charlotte, NC. Fundado por JT Earl — certificado AWS Solution Architect y Developer — actualmente desarrollando FrameFocal, una plataforma de galerías para fotógrafos.',
+      'Waycross Labs es un pequeño laboratorio de software en Charlotte, NC, donde JT Earl construye software útil, un producto a la vez. Actualmente desarrollando FrameFocal, una plataforma de galerías para fotógrafos.',
     keywords: [
       'Waycross Labs',
       'JT Earl',
-      'estudio de software Charlotte',
+      'laboratorio de software Charlotte',
       'AWS Solution Architect Charlotte',
       'FrameFocal',
-      'estudio de ingeniería NC',
     ],
     ogImage: '/og-image-es.png',
   },
